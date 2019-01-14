@@ -1,0 +1,35 @@
+{%extends  "layout.html"%}
+{% block body_content %}
+    
+    <h1>List des Mouvements</h1>
+    {%include "search_in_table.html"%}
+
+        <table class="ui red selectable table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Username</th>
+                    <th>Qtt</th>
+                    <th>moves_type</th>
+                    <th>note</th>
+                    <th class="right aligned"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lst %}
+                    <tr>
+                        <td>{{item.moves_date}}</td>
+                        <td>{{item.producteur.username}}</td>
+                        <td>{{item.qtt}}</td>
+                        <td>{{item.moves_type}}</td>
+                        <td>{{item.note}}</td>
+                        <td class="right aligned">
+                            <a class="mini ui red button" href="/delete_moves?key={{item.id}}">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        
+{% endblock %}

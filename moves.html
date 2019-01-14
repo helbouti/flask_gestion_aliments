@@ -1,0 +1,40 @@
+{%extends   "layout.html"%}
+{% block body_content %}
+    
+    <center>
+            <h1>Ajouté des Mouvement</h1>
+    <form action="/moves" method="POST" id="producteur_form" class="ui form" style="width:50%;"> 
+        <fieldset>
+        <legend>Simple form</legend>
+        <div class="field">
+            <label for="user_id">Select prodecteur from List</label>
+            <select name="user_id" id="select_prodecteur">
+                {%for item in lst%}
+                    <option value="{{item.id}}">{{item.username}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="two fields">
+            <div class="field">
+                <label for="qtt">Qtt</label>
+                <input type="text" name="qtt" placeholder="qtt" required="true"/>
+            </div>
+            <div class="field">
+                <label for="moves_type">moves_type</label>
+                <input type="text" name="moves_type" placeholder="moves type" />
+            </div>
+        </div>
+        <div class="field">
+            <label for="moves_date">Select Date</label>
+            <input type="date" name="moves_date"/>  
+        </div>
+        <div class="field">
+            <label for="note">Note</label>   
+            <textarea name="note" id="note" cols="30" rows="10"></textarea>
+        </div>
+            <input type="submit" value="Save" class="ui button"/>
+        
+        </fieldset>
+    </form>
+</center>
+{% endblock %}

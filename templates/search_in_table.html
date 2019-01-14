@@ -1,0 +1,23 @@
+<form class="ui form">
+   <fieldset>
+       <div class="field">
+            <div class="ui icon input">
+                <i class="search icon"></i>
+                <input type="text" placeholder="Search..." id="txtSearch">
+            </div>
+            
+       </div>
+       
+       <div class="ui red button" id="btnSearch">Go</div>
+    </fieldset>
+</form>
+<script>
+        $("#btnSearch").click(function(){
+            var keyword=$("#txtSearch").val();
+            //if(keyword==""){break;}
+            console.log(keyword);
+            $("td").parent().fadeOut();
+
+            $("td:contains("+keyword+")").parent().fadeIn();
+        });
+</script>

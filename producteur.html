@@ -1,0 +1,27 @@
+{%extends  "layout.html"%}
+{% block body_content %}
+<center>
+    <h1>Ajouté des producteurs</h1>
+    <form action="/producteur" method="POST" id="producteur_form" class="ui form" style="width:50%;">        
+        <fieldset >
+        <legend>Simple form</legend>
+        <div class="two fields">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="username" required="true">
+            </div>
+            <div class="field">
+                <label for="tel">tel</label>
+                <input type="text" name="tel" placeholder="tel" required="true">
+            </div>
+        </div>
+        <div class="field">
+            <label for="collecteur">collecteur</label>
+            <input type="text" name="collecteur" placeholder="collecteur" required="true">
+        </div>
+            <input type="submit" value="Save" class="ui button">
+        </fieldset>
+    </form>
+
+</center>
+{% endblock %}

@@ -1,0 +1,44 @@
+{%extends  "layout.html"%}
+{% block body_content %}
+    <h1>List des producteurs</h1>
+{%include "search_in_table.html"%}
+
+        <table class="ui red selectable table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Tel</th>
+                    <th class="right aligned"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in lst %}
+                    <tr>
+                        <td>
+                            <a href="/list_moves?key={{item.id}}">
+                            <div class="ui animated icon button">
+                                <div class="visible content">{{item.username}}</div>
+                                <div class="hidden content"><i class="right arrow icon"></i></div>
+                                
+                                
+                            </div>
+                            </a>
+                        </td>
+                        <td>{{item.tel}}</td>
+                        <td class="right aligned" >
+                            
+                            <a class="mini ui red button" href="/delete_producteur?key={{item.id}}">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        
+        
+            
+
+        
+     
+    
+{% endblock %}

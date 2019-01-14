@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Index</title>
+    
+    <link rel="stylesheet" href="/static/sementic/semantic.min.css">
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/sementic/semantic.min.js"></script>
+    
+
+</head>
+<body>
+    
+            <div class="ui inverted menu">
+                <div class="item">
+                        <a  href="/">
+                                <div class="ui {% if request.path == '/' %} primary {% endif %} labeled icon button">
+                                       <i class="home icon"></i> Home
+                                </div>
+                        </a>
+                </div>
+                <div class="item">
+                        
+                        <a class="nav-link" href="/producteur">
+                                <div class="ui {% if request.url_rule.endpoint == 'producteur' %} primary {% endif %} animated labeled icon button">
+                                        <i class="user icon"></i>Producteur
+                                </div>
+                        </a>
+                </div>
+                <div class="item">
+                        <a class="nav-link" href="/moves">
+                                <div class="ui {% if request.url_rule.endpoint == 'moves' %} primary {% endif %} labeled icon button">
+                                        <i class="exchange icon"></i>Mouvements
+                                </div>
+                        </a>
+                </div>
+                <div class="item">
+                        <a class="nav-link" href="/list_producteurs">
+                                <div class="ui {% if request.url_rule.endpoint == 'list_producteurs' %} primary {% endif %} labeled icon button">
+                                        <i class="list icon"></i> List Producteur
+                                </div>
+                        </a>
+                </div>
+                <div class="item">
+                        <a class="nav-link" href="/list_moves?key=">
+                                <button class="ui {% if request.url_rule.endpoint == 'list_moves' %} primary {% endif %} labeled icon button">
+                                        <i class="list icon"></i>List Mouvements
+                                </button>
+                        </a>
+                </div>
+                <div class="item">
+                        <a class="nav-link" href="/moves_report?group_by=producteur">
+                                <div class="ui {% if request.url_rule.endpoint == 'moves_report' %} primary {% endif %} labeled icon button">
+                                        <i class="filter icon"></i>Raport Mouvements
+                                </div>
+                        </a>
+                </div>
+                <div class="item">
+                        <a class="nav-link" href="/about">
+                                <div class="ui {% if request.url_rule.endpoint == 'about' %} primary {% endif %} labeled icon button">
+                                       <i class="coffee icon"></i> About us
+                                </div>
+                        </a>
+                </div>
+            </div>
+
+    
+    
+    {% block body_content %}
+        
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+{%extends  "layout.html"%}
+{% block body_content %}
+
+<div class="ui container">
+        <h1>about page</h1>
+        <div class="ui search">
+                <input class="prompt" type="text" placeholder="Search ...">
+                <div class="result"></div>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint ullam a consequatur, ex fugiat assumenda tenetur at eum necessitatibus cumque rem odio quibusdam? Eius voluptatibus quae laboriosam itaque magni?</p>
+</div>
+<script>
+        content=[
+                {
+                        title:"Abida mohamed ben Ahmed",
+                        description:"20q nessaa 12/03/2018"
+                },
+                {
+                        title:"Abida Ali ben Ahmed",
+                        description:"30q bista 12/03/2018"
+                },
+                {
+                        title:"Abida hakim ben Ahmed",
+                        description:"120q nessaa 12/03/2018"
+                }
+                ];
+                $(".ui.search").search({source:content,searchFullText:false});
+</script>
+        
+    
+{% endblock %}

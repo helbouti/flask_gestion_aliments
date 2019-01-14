@@ -1,0 +1,119 @@
+{%extends  "layout.html"%}
+{% block body_content %}
+
+<div class="ui container">
+    
+    <div class="ui menu">
+        <a class="teal item" href="/moves_report?group_by=all">All</a>
+        <a class="teal item" href="/moves_report?group_by=aliment"> By Aliment Type</a>
+        <a class="teal item" href="/moves_report?group_by=qtt">  By Aliment Qtt</a>
+        <a class="teal item" href="/moves_report?group_by=producteur">  By Producteur</a>
+        <!--<a class="teal item" href="/moves_report?group_by=collecteur"> By Collecteur</a>-->
+        
+        <div class="right menu">
+            <div class="teal item">
+                    <div class="ui label">First date</div> 
+                    <input type="date" class="ui date" id="first_date">
+            </div>
+            <div class="teal item">
+                        <div class="ui label">Last date</div>
+                        <input type="date" class="ui date" id="last_date">
+            </div>
+            <div class="teal item">
+                    
+                    <div class="ui toggle checkbox">
+                        <input type="checkbox" name="by_date">
+                        <label>By Date</label>
+                    </div>
+            </div>
+        </div>
+    
+    </div>
+
+
+
+    </div>
+    
+       
+
+</div>
+
+
+    <h1>List des Mouvements</h1>
+    
+
+    {%include "search_in_table.html"%}
+
+  
+
+        <table class="ui red selectable table">
+            <thead>
+                <tr>
+                    {% if group_by=="aliment"%}  
+                        <th>moves_type</th>
+                        <th>Qtt</th>
+                    {% endif %}
+                    {% if group_by=="producteur"%}  
+                        <th>Username</th>
+                        <th>Qtt</th>
+                    {% endif %}
+                    {% if group_by=="all"%}  
+                        <th>Username</th>
+                        <th>Date</th>
+                        <th>Qtt</th>
+                        <th>moves_type</th>
+                        <th>note</th>
+                    {% endif %}
+                    {% if group_by=="qtt"%}  
+                        <th>Qtt</th>
+                        <th>Count</th>
+                    {% endif %}
+
+                    
+                    <th class="right aligned"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if lst %}
+                {% for item in lst %}
+                    <tr>
+                        {% if group_by=="aliment"%} 
+                            <td>{{item.moves_type}}</td>
+                            <td>{{item.sum_qtt}}</td>
+                        {% endif %}
+                        {% if group_by=="producteur"%}  
+                            <!--<td>{{item.producteur.username}}</td>-->
+                            <td>
+                                    <a href="/list_moves?key={{item.producteur.id}}">
+                                    <div class="ui animated icon button">
+                                        <div class="visible content">{{item.producteur.username}}</div>
+                                        <div class="hidden content"><i class="right arrow icon"></i></div>
+                                        
+                                        
+                                    </div>
+                                    </a>
+                            </td>
+                            <td>{{item.sum_qtt}}</td>
+                        {% endif %}
+                        {% if group_by=="all"%} 
+                            <td>{{item.producteur.username}}</td>
+                            <td>{{item.moves_date}}</td>
+                            <td>{{item.qtt}}</td>
+                            <td>{{item.moves_type}}</td>
+                            <td>{{item.note}}</td>
+                            <td class="right aligned">
+                                <a class="mini ui red button" href="/delete_moves?key={{item.id}}">X</a>
+                            </td>
+                        {% endif %}
+                        {% if group_by=="qtt"%} 
+                            <td>{{item.qtt}}</td>
+                            <td>{{item.qtt_count}}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    
+        
+{% endblock %}
